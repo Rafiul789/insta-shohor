@@ -19,6 +19,7 @@ const addToLiked = (id) => {
  
   isLiked(id);
     showPosts(posts);
+    likedPostsId.push(id)
 };
 
 const reportPost = (id) => {
@@ -52,7 +53,7 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  console.log(post)
+  
     const image = post.image;
     const div = document.createElement("article");
     div.classList.add("post");
@@ -145,14 +146,19 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
+  const likedPost=document.getElementById("liked")
+  likedPosts.innerHTML =''
     const likedPosts = getLikedPosts();
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById("liked").appendChild(div);
     });
+    
 };
 
 const displayReportedPosts = () => {
+  const reported=document.getElementById("reported")
+  reported.innerHTML=''
     const reportedPosts = getReportedPosts();
     posts.forEach((post) => {
         const div = createPost(post);
